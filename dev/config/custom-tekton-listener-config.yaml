@@ -1,5 +1,5 @@
 # Global config for all pipelines
-globalGitHubSecretName: github-global-secret
+globalGithubSecretName: github-global-secret
 globalServiceAccount: pipelinerun-sa
 
 globalExtraParams:
