@@ -1,4 +1,4 @@
 [
    {"op": "replace", "path": "/spec/template/spec/containers/0/env/0/value", "value": "custom-tekton-listener"},
-   {"op": "replace", "path": "/spec/template/spec/containers/0/env/1/value", "value": "custom-tekton-listener-config-dev"}
+   {"op": "replace", "path": "/spec/template/spec/containers/0/env/1/value", "value": "custom-tekton-listener-dev"}
 ]
