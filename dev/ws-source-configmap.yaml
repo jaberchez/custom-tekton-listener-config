@@ -1,0 +1,20 @@
+# Note: ws-source is the name of the ConfigMap which custom-tekton-listener gets, but
+#       the real name of the workspace for tekton pipeline is in the template, in this 
+#       case "source"
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ws-source
+  namespace: custom-tekton-listener-dev
+data:
+  template: |
+    - name: source
+      volumeClaimTemplate:
+        spec:
+          resources:
+            requests:
+              storage: 5Gi
+          volumeMode: Filesystem
+          accessModes:
+            - ReadWriteOnce
