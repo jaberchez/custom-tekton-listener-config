@@ -39,7 +39,6 @@ configMapGenerator:
 
 secretGenerator:
   - name: github-global-secret
-    files:
-      - password=./config/github-global-secret.ini
+    env: ./config/github-global-secret.ini
     options:
       disableNameSuffixHash: true
