@@ -1,0 +1,40 @@
+# Global config for all pipelines
+globalGithubSecretName: github-global-secret
+globalServiceAccount: pipelinerun-sa
+
+globalExtraParams:
+  - name: registry
+    value: "quay.io"
+    
+# Each pipeline
+pipelines:
+  - name: microservice-ci-golang
+    workspaces:
+      - name: ws-source
+        type: volumeClaimTemplate
+    
+    # Notes: - When expressions are ANDed together (they must all be satisfied in order to match)
+    #        - Allowed operators equal, notequal, contains, notcontain
+    #        - contains and notcontain are checked as regex, so a regex value is allowed
+    #        - Values for payload type are jsonpath from library https://github.com/tidwall/gjson
+    when:
+      - kind: query
+        keys:
+          - "run"
+        values:
+          - operator: "equal"
+            data: "true"
+      - kind: payload
+        keys:
+          - "action"
+        values:
+          - operator: "equal"
+            data: "synchronize"
+          - operator: "equal"
+            data: "opened"
+      - kind: header
+        keys:
+          - "X-Github-Event"
+        values:
+          - operator: "equal"
+            data: "pull_request"

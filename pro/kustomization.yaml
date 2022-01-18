@@ -1,0 +1,44 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Create Job to restart Deployment when Configmap is updated
+resources:
+  - https://github.com/jaberchez/kustomize-bases/job/restart-deployment?ref=main
+  - ws-source-configmap.yaml
+
+namespace: custom-tekton-listener-pro
+
+patches:
+  - target:
+      kind: Role
+      name: restart-job
+    path: patch-role.json
+
+  - target:
+      kind: RoleBinding
+      name: restart-job
+    path: patch-role-binding.json
+
+  - target:
+      kind: Job
+      name: restart-deployment
+    path: patch-job.json
+
+# Create Configmaps from files
+configMapGenerator:
+  - name: custom-tekton-listener-env-vars
+    env: ./config/custom-tekton-listener-configmap.env
+    options:
+      disableNameSuffixHash: true
+
+  - name: custom-tekton-listener-config
+    files:
+      - config=./config/custom-tekton-listener-config.yaml
+    options:
+      disableNameSuffixHash: true
+
+secretGenerator:
+  - name: github-global-secret
+    env: ./config/github-global-secret.ini
+    options:
+      disableNameSuffixHash: true
