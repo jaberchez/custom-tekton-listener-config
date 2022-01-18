@@ -6,7 +6,7 @@ resources:
   - https://github.com/jaberchez/kustomize-bases/job/restart-deployment?ref=main
   - ws-source-configmap.yaml
 
-namespace: custom-tekton-listener-dev
+namespace: custom-tekton-listener-pro
 
 patches:
   - target:

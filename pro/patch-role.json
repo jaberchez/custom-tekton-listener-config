@@ -1,0 +1,3 @@
+[
+   {"op": "replace", "path": "/rules/0/resourceNames/0", "value": "custom-tekton-listener"}
+]
