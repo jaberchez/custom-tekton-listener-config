@@ -38,3 +38,26 @@ pipelines:
         values:
           - operator: "equal"
             data: "pull_request"
+
+  - name: microservice-cd-test
+    when:
+      - kind: query
+        keys:
+          - "run"
+        values:
+          - operator: "equal"
+            data: "true"
+      - kind: payload
+        keys:
+          - "action"
+        values:
+          - operator: "equal"
+            data: "created"
+          - operator: "equal"
+            data: "edited"
+      - kind: header
+        keys:
+          - "X-Github-Event"
+        values:
+          - operator: "equal"
+            data: "issue_comment"
