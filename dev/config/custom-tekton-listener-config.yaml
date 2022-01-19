@@ -39,7 +39,7 @@ pipelines:
           - operator: "equal"
             data: "pull_request"
 
-  - name: microservice-cd-test
+  - name: microservice-cd
     when:
       - kind: query
         keys:
