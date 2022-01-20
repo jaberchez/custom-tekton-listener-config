@@ -55,6 +55,14 @@ pipelines:
             data: "created"
           - operator: "equal"
             data: "edited"
+      - kind: payload
+        keys:
+          - "comment.body"
+        values:
+          - operator: "contains"
+            data: "/deploy:dev"
+          - operator: "contains"
+            data: "/deploy:pre"
       - kind: header
         keys:
           - "X-Github-Event"
