@@ -40,6 +40,9 @@ pipelines:
             data: "pull_request"
 
   - name: microservice-cd
+    workspaces:
+      - name: ws-source-cd
+        type: volumeClaimTemplate
     when:
       - kind: query
         keys:
