@@ -4,7 +4,7 @@ kind: Kustomization
 # Create Job to restart Deployment when Configmap is updated
 resources:
   - https://github.com/jaberchez/kustomize-bases/job/restart-deployment?ref=main
-  - ws-source-configmap.yaml
+  - ws-source-ci-configmap.yaml
 
 namespace: custom-tekton-listener-dev
 
