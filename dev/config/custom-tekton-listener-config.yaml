@@ -10,7 +10,7 @@ globalExtraParams:
 pipelines:
   - name: microservice-ci-golang
     workspaces:
-      - name: ws-source
+      - name: ws-source-ci
         type: volumeClaimTemplate
     
     # Notes: - When expressions are ANDed together (they must all be satisfied in order to match)
