@@ -5,6 +5,7 @@ kind: Kustomization
 resources:
   - https://github.com/jaberchez/kustomize-bases/job/restart-deployment?ref=main
   - ws-source-ci-configmap.yaml
+  - ws-source-cd-configmap.yaml
 
 namespace: custom-tekton-listener-dev
 
