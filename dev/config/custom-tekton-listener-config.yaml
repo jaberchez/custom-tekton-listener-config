@@ -66,6 +66,8 @@ pipelines:
             data: "/deploy:dev"
           - operator: "contains"
             data: "/deploy:pre"
+          - operator: "contains"
+            data: "/deploy:pro"
       - kind: header
         keys:
           - "X-Github-Event"
